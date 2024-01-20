@@ -19,7 +19,6 @@
 *.db-wal
 *.opendb
 *.vsidx
-*.lock
 .editorconfig
 build/
 *local/
