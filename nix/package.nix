@@ -14,13 +14,14 @@ stdenv.mkDerivation rec {
   buildInputs = [];
 
   # overwrite the submodule with the source provided as an input to this derivation
-#  configurePhase =
-#  ''
-#    ln -s ${cppfront-src} cppfront
-#    ls -al
-#    mkdir build && cd build
-#    cmake ..
-#  '';
+  configurePhase =
+  ''
+    ln -s ${cppfront-src} cppfront
+    mkdir build && cd build
+    cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=$out
+  '';
+
+  separateDebugInfo = true;
 
   meta = with lib; {
     description = "cppfront";
